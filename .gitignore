@@ -10,8 +10,8 @@ local.properties
 .loadpath
 .recommenders
 
-web/target
-service/target
+webapp/target
+core-services/target
 persistence/target
 auth/target
 
