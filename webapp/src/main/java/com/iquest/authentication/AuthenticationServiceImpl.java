@@ -32,9 +32,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 		user.setToken(token);
 		List<RoleModel> rm = roleRepository.findByRoleName("ROLE_USER");
 		System.out.println(rm);
-		user.setRoles(rm);
+		/*user.setRoles(rm);
 		userRepository.save(user);
-		//emailSender.sendMail(user.getEmail(), token);*/
+		emailSender.sendMail(user.getEmail(), token);*/
 	}
 
 }
