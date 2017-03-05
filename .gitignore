@@ -14,7 +14,12 @@ local.properties
 
 webapp/target
 core-services/target
+core-services/converters/target
+core-services/services/target
+core-services/data/target
 persistence/target
+persistence/repositories/target
+persistence/models/target
 auth/target
 
 # Eclipse Core
