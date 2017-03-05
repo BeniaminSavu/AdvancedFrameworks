@@ -34,7 +34,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 		System.out.println(rm);
 		user.setRoles(rm);
 		userRepository.save(user);
-		//emailSender.sendMail(user.getEmail(), token);*/
+		// emailSender.sendMail(user.getEmail(), token);*/
 	}
 
 }
