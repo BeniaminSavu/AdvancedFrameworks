@@ -1,4 +1,4 @@
-package com.iquest.controllers;
+	package com.iquest.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,12 +11,6 @@ public class LoginController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
-		return "login";
-	}
-
-	@RequestMapping(value = "/loginfailed", method = RequestMethod.GET)
-	public String loginerror(Model model) {
-		model.addAttribute("error", "The username or password you entered is incorrect.");
 		return "login";
 	}
 

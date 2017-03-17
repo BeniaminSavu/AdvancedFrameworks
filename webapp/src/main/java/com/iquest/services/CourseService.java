@@ -13,4 +13,8 @@ public interface CourseService {
 	
 	List<CourseData> findAllCourses();
 	
+	List<CourseData> findCoursesByType(String type);
+	
+	CourseModel findCourseById(long id);
+	
 }

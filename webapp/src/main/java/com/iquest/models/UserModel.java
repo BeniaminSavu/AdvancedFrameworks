@@ -1,13 +1,9 @@
 package com.iquest.models;
 
-import java.util.Collection;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.JoinColumn;
 
 @Entity
@@ -20,18 +16,21 @@ public class UserModel {
 	private String username;
 	private String email;
 	private String password;
-	private String token;
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "userroles", joinColumns = @JoinColumn(name = "username", referencedColumnName = "username"), inverseJoinColumns = @JoinColumn(name = "role", referencedColumnName = "roleName"))
-	private List<RoleModel> roles;
-	
-	public List<RoleModel> getRoles() {
-		return roles;
+	@OneToOne
+	@JoinColumn(name = "userTokenId")
+	private UserTokenModel userToken;
+
+	@ManyToOne
+	@JoinColumn(name = "roleId")
+	private RoleModel role;
+
+	public RoleModel getRole() {
+		return role;
 	}
 
-	public void setRoles(List<RoleModel> roles) {
-		this.roles = roles;
+	public void setRole(RoleModel role) {
+		this.role = role;
 	}
 
 	public String getFirstName() {
@@ -50,12 +49,12 @@ public class UserModel {
 		this.lastName = lastName;
 	}
 
-	public String getToken() {
-		return token;
+	public UserTokenModel getUserToken() {
+		return userToken;
 	}
 
-	public void setToken(String token) {
-		this.token = token;
+	public void setUserToken(UserTokenModel userToken) {
+		this.userToken = userToken;
 	}
 
 	public long getUserId() {

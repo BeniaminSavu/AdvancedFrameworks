@@ -11,8 +11,5 @@ import com.iquest.models.CourseModel;
 public interface CourseRepository extends CrudRepository<CourseModel, Long> {
 
 	List<CourseModel> findAll();
-	
-	List<CourseModel> findByType(String type);
-	
-	CourseModel findByCourseId(long id);
+
 }

@@ -7,17 +7,17 @@ import javax.persistence.Id;
 public class CourseModel {
 	
 	@Id
-	private int courseId;
+	private long courseId;
 	private String name;
 	private String type;
 	private String description;
 	private int price;
 
-	public int getCourseId() {
+	public long getCourseId() {
 		return courseId;
 	}
 
-	public void setCourseId(int courseId) {
+	public void setCourseId(long courseId) {
 		this.courseId = courseId;
 	}
 

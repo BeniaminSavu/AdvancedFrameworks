@@ -5,4 +5,6 @@ import com.iquest.models.UserModel;
 public interface AuthenticationService {
 	
 	void createUser(UserModel user);
+
+	String validate(String userToken);
 }

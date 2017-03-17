@@ -24,27 +24,34 @@
 						<h3 class="panel-title">Please sign in</h3>
 					</div>
 					<div class="panel-body">
-						
-						<c:if test="${not empty error}">
-							<div class="alert alert-danger">
-								<p>${error}</p>
-							</div>
-						</c:if>
-						<form action="<c:url value= "/j_spring_security_check"></c:url>"
-							method="post">
+						<c:url value= "/j_spring_security_check" var="loginUrl"/>
+						<form action="${loginUrl}" method="post">
+							<c:if test="${param.error != null}">
+								<div class="alert alert-error">
+									Failed to login.
+									<c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">
+										<c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}" />
+									</c:if>
+								</div>
+							</c:if>	
 							<fieldset>
 								<div class="form-group">
-									<input class="form-control" placeholder="User Name"
-										name='j_username' type="text">
+									<label class="control-label col-lg-3 col-lg-3" for="username">Username</label>
+									<div class="col-lg-10">
+										<input type="text" id="username" name="j_username" />
+									</div>
 								</div>
 								<div class="form-group">
-									<input class="form-control" placeholder="Password"
-										name='j_password' type="password" value="">
+									<label class="control-label col-lg-3 col-lg-3" for="password">Password</label>
+									<div class="col-lg-10">
+										<input type="password" id="password" name="j_password"/>
+									</div>
 								</div>
-								<input class="btn btn-lg btn-success btn-block" type="submit"
-									value="Login">
+								<div class="col-lg-10">
+									<input class="btn btn-lg btn-success btn-block" type="submit" value="Login" />
+								</div>
 							</fieldset>
-							<p>Don't gave an account ? <a href="signup">sign up</a> now !</p>
+							<p>Don't have an account ? <a href="signup">sign up</a> now !</p>
 						</form>
 					</div>
 				</div>

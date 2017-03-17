@@ -1,25 +1,18 @@
 package com.iquest.authentication;
 
-import com.iquest.models.RoleModel;
+
+import com.iquest.constants.Message;
 import com.iquest.models.UserModel;
-import com.iquest.repositories.RoleRepository;
-import com.iquest.repositories.UserRepository;
-
-import java.util.List;
-
-import javax.transaction.Transactional;
+import com.iquest.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
-
+	
 	@Autowired
-	private UserRepository userRepository;
-
-	@Autowired
-	private RoleRepository roleRepository;
+	private UserService userService;
 
 	@Autowired
 	private TokenGenerator userTokenGenerator;
@@ -29,12 +22,19 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
 	public void createUser(UserModel user) {
 		String token = userTokenGenerator.generateToken();
-		user.setToken(token);
-		List<RoleModel> rm = roleRepository.findByRoleName("ROLE_USER");
-		System.out.println(rm);
-		user.setRoles(rm);
-		userRepository.save(user);
-		// emailSender.sendMail(user.getEmail(), token);*/
+		userService.createUser(user, token);
+		emailSender.sendMail(user.getEmail(), token);
 	}
+
+	public String validate(String userToken) {
+		String message = "";
+		if(userService.verify(userToken)){
+			message = Message.TOKEN_EXPIRED;
+		} else {
+			message = Message.TOKEN_NOT_EXPIRED;
+		}
+		return message;
+	}
+
 
 }
