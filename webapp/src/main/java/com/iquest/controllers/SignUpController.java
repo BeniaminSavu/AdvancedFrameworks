@@ -25,14 +25,16 @@ public class SignUpController {
 	}
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public String processNewUserFrom(@ModelAttribute("newUser") UserModel newUser) {
+	public String processNewUserFrom(@ModelAttribute("newUser") UserModel newUser, Model model) {
 		authenticationService.createUser(newUser);
-		return "validationInform";
+		model.addAttribute("message", "Thank you for registering. Please confirm your email within 1 day. You may proceed to login");
+		return "validation";
 	}
 	
-	@RequestMapping(value = "/signup/validate/{userToken}", method = RequestMethod.GET)
-	public String validate(@PathVariable String userToken) {
-		
-		return "validate";
+	@RequestMapping(value = "/signup/validation/{userToken}", method = RequestMethod.GET)
+	public String validate(@PathVariable String userToken, Model model) {
+		String message = authenticationService.validate(userToken);
+		model.addAttribute("message", message);
+		return "validation";
 	}
 }

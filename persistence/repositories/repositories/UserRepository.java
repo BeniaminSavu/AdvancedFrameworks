@@ -8,5 +8,4 @@ import com.iquest.models.UserModel;
 @Repository
 public interface UserRepository extends CrudRepository<UserModel, Long> {
 	
-	public UserModel findByUsername(String username); 
 }

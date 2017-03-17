@@ -1,12 +1,11 @@
 package com.iquest.models;
 
-import java.util.Collection;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class RoleModel {
@@ -14,15 +13,15 @@ public class RoleModel {
 	@Id
 	private long roleId;
 	private String roleName;
-
-	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "roles")
-	private List<UserModel> users;
-
-	public List<UserModel> getUsers() {
+	
+	@OneToMany(mappedBy="role", cascade=CascadeType.ALL)
+	private Set<UserModel> users;
+	
+	public Set<UserModel> getUsers() {
 		return users;
 	}
 
-	public void setUsers(List<UserModel> users) {
+	public void setUsers(Set<UserModel> users) {
 		this.users = users;
 	}
 
