@@ -6,11 +6,17 @@ import com.iquest.data.CourseData;
 import com.iquest.models.CourseModel;
 
 public interface CourseService {
-	
+
 	void changeCourseDescription(long courseId, String message);
-	
+
 	void addCourse(CourseModel course);
-	
+
 	List<CourseData> findAllCourses();
-	
+
+	List<CourseData> findCoursesByType(String type);
+
+	CourseModel findCourseById(long id);
+
+	void removeById(long id);
+
 }

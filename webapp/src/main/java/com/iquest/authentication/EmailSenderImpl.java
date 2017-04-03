@@ -6,14 +6,14 @@ import org.springframework.mail.SimpleMailMessage;
 
 import com.iquest.constants.Email;
 
-public class EmailSenderImpl implements EmailSender{
-	
+public class EmailSenderImpl implements EmailSender {
+
 	@Autowired
 	private MailSender mailSender;
-	
+
 	public void sendMail(String to, String token) {
 		SimpleMailMessage message = new SimpleMailMessage();
-		
+
 		message.setTo(to);
 		message.setSubject(Email.SUBJECT);
 		message.setText(Email.TEXT + token);

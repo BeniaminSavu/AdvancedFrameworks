@@ -3,7 +3,7 @@ package com.iquest.converters;
 import com.iquest.data.CourseData;
 import com.iquest.models.CourseModel;
 
-public class CourseConverter implements Converter<CourseModel, CourseData>{
+public class CourseConverter implements Converter<CourseModel, CourseData> {
 
 	public CourseData convertToData(CourseModel model) {
 		CourseData courseData = new CourseData();
