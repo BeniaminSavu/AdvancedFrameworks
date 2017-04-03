@@ -54,4 +54,8 @@ public class CourseServiceImpl implements CourseService {
 		return courseRepository.findByCourseId(id);
 	}
 
+	public void removeById(long id) {
+		courseRepository.delete(id);
+	}
+
 }

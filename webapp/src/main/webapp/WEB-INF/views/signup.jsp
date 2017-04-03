@@ -34,6 +34,7 @@
 					<label class="control-label col-lg-2 col-lg-2" for="username">Username</label>
 					<div class="col-lg-10">
 						<form:input id="username" path="username" type="text" class="form:input-large" />
+						<form:errors path="username" cssClass="alert alert-danger"/>
 					</div>
 				</div>
 				<div class="form-group">

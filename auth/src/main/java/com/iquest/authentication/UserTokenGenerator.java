@@ -2,14 +2,14 @@ package com.iquest.authentication;
 
 import java.util.UUID;
 
-public class UserTokenGenerator implements TokenGenerator{
+public class UserTokenGenerator implements TokenGenerator {
 
 	public String generateToken() {
 		String token;
 
-	    UUID uuid = UUID.randomUUID();
-	    token = uuid.toString();
-	    return token;
+		UUID uuid = UUID.randomUUID();
+		token = uuid.toString();
+		return token;
 	}
 
 }

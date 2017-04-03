@@ -12,5 +12,4 @@ public interface CommentRepository extends CrudRepository<CommentModel, Long> {
 
 	List<CommentModel> findAll();
 
-
 }

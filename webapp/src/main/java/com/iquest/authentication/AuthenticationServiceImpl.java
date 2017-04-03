@@ -1,6 +1,5 @@
 package com.iquest.authentication;
 
-
 import com.iquest.constants.Message;
 import com.iquest.models.UserModel;
 import com.iquest.services.UserService;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
-	
+
 	@Autowired
 	private UserService userService;
 
@@ -28,13 +27,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
 	public String validate(String userToken) {
 		String message = "";
-		if(userService.verify(userToken)){
+		if (userService.verify(userToken)) {
 			message = Message.TOKEN_EXPIRED;
 		} else {
 			message = Message.TOKEN_NOT_EXPIRED;
 		}
 		return message;
 	}
-
 
 }
